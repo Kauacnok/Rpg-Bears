@@ -2,16 +2,23 @@
 
   "compilerOptions": {
 
+  	"target": "es2020",
+
     "sourceMap": true,
 
-    "outDir": "./src/dist",
+    "rootDir": "./src",
+
+    "outDir": "./dist",
 
     "strict": true,
 
     "lib": ["esnext"],
 
-    "esModuleInterop": true
+    "esModuleInterop": true,
 
-  }
+    "skipLibCheck": true
+
+  },
+  "include": ["src"]
 
 }
