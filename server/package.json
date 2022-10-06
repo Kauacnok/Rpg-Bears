@@ -6,6 +6,7 @@
   "scripts": {
     "build": "npx tsc",
     "start": "node dist/server.js",
+    "postinstall": "prisma generate",
     "dev": "ts-node-dev src/server.ts",
   },
   "keywords": [],
