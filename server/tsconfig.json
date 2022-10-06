@@ -12,8 +12,6 @@
 
     "strict": true,
 
-    "lib": ["esnext"],
-
     "esModuleInterop": true,
 
     "skipLibCheck": true
