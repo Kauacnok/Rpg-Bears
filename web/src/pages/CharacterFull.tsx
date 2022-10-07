@@ -11,7 +11,7 @@ export function CharacterFull() {
 
 	const getApiData = async () => {
 	  const response = await fetch(
-	    `${import.meta.env.VITE_API_URL}/CharactersList`
+	    `${import.meta.env.VITE_API_URL}/Character/${id}`
 	  ).then((response) => response.json());
 
 	  return setCharacter(response);
@@ -20,6 +20,8 @@ export function CharacterFull() {
 	useEffect(() => {
 		getApiData();
 	}, [])
+
+	console.log(character)
 
 	return (
 		<>
