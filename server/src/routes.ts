@@ -1,9 +1,12 @@
 import { PrismaClient } from '@prisma/client'
 import express from 'express'
+import { redis } from './lib/cache'
 
 const prisma = new PrismaClient({
 	log: ['query']
 })
+
+const cacheKey = "CharactersList:all"
 
 function randomIntFromInterval(min: number, max: number) { 
   return Math.floor(Math.random() * (max - min + 1) + min)
@@ -25,7 +28,15 @@ function CharacterRole() {
 export const routes = express.Router()
 
 routes.get('/CharactersList', async(req, res) => {
+
+	const cachedCharacters = await redis.get(cacheKey)
+
+	if (cachedCharacters) {
+		return res.json(JSON.parse(cachedCharacters))
+	}
+
 	const characters = await prisma.character.findMany()
+	redis.set(cacheKey, JSON.stringify(characters))
 
 	res.json(characters)
 })
@@ -50,6 +61,9 @@ routes.post('/CreateCharacter', async (req, res) => {
   		data: { name, force: randomIntFromInterval(1, 5), agility: randomIntFromInterval(1, 5), velocity: randomIntFromInterval(1, 5), charisma: randomIntFromInterval(1, 5), inteligence: randomIntFromInterval(1, 5), constitution: randomIntFromInterval(1, 5), role: CharacterRole() },
 	})
 
+	redis.del(cacheKey)
+
+	res.json(Character)
 	res.status(201)
 })
 
