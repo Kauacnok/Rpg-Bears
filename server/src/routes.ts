@@ -82,5 +82,7 @@ routes.put('/Character/Update/:id', async (req, res) => {
 		},
 	})
 
+	redis.del(cacheKey)
+	
 	res.status(201)
 })
