@@ -41,6 +41,8 @@ $ npm run dev
 
 O Rpg Bears era apenas um projeto para aprender novas tecnologias, mas acabou sendo util para um grupo de amigos usamos ele para a criação de fichas de nossos personagens geradas automaticamente e guardada no banco de dados
 
+Feedbacks sempre são bem vindos :)
+
 ## 🔖 Layout
 
 Você pode visualizar o layout do projeto através do link abaixo:
