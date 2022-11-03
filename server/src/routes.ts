@@ -86,3 +86,18 @@ routes.put('/Character/Update/:id', async (req, res) => {
 	
 	res.status(201)
 })
+
+
+routes.delete('/Character/Delete/:id', async (req, res) => {
+	const { id } = req.params
+
+	const deleteUser = await prisma.character.delete({
+	  where: {
+	    id: Number(id)
+	  },
+	})
+
+	redis.del(cacheKey)
+	
+	res.status(200)
+})

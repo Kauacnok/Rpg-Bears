@@ -3,6 +3,7 @@ import { Link, useParams } from 'react-router-dom'
 import { ArrowLeft } from 'phosphor-react'
 
 import { Header } from '../components/Header'
+import { DeleteCharacterCard } from '../components/DeleteCharacterCard'
 
 export function CharacterFull() {
 	const { id } = useParams<{ id: string }>()
@@ -10,6 +11,8 @@ export function CharacterFull() {
 	const [character, setCharacter] = useState<any[]>([]);
 
 	const [character_ID, setCharacterID] = useState(0)
+
+	const [isMenuOpen, setIsMenuOpen] = useState(false)
 
 	const getApiData = async () => {
 	  const response = await fetch(
@@ -28,6 +31,10 @@ export function CharacterFull() {
 	useEffect(() => {
 		getApiData()
 	}, [character_ID, setCharacterID])
+
+	function openMenu() {
+		setIsMenuOpen(true)
+	}
 
 	return (
 		<>
@@ -55,6 +62,12 @@ export function CharacterFull() {
 					<h2 className="text-[30px]">Inventário: </h2>
 					<textarea value={character[character_ID]?.inventory} readOnly className="bg-gray-700 w-[90%] h-[400px]"></textarea>
 				</article>
+				<aside>
+					{isMenuOpen && <DeleteCharacterCard isMenuOpen={setIsMenuOpen} />}
+				</aside>
+				<footer>
+					<button type="button" className="bg-red-500 w-[100%] p-2 rounded hover:bg-red-600 transition" onClick={openMenu}>Deletar personagem</button>
+				</footer>
 			</main>
 		</>
 	)

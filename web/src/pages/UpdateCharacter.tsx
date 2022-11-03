@@ -12,12 +12,17 @@ export function UpdateCharacter() {
 	const navigate = useNavigate()
 
 	const [character, setCharacter] = useState<any[]>([]);
+	const [character_ID, setCharacterID] = useState(0)
 
 	const getApiData = async () => {
 	  const response = await fetch(
 	    `${import.meta.env.VITE_API_URL}/CharactersList`
 	  ).then((response) => response.json());
-
+	  
+		response.map((character_u: any, index: number) => {
+			if (character_u.id == Number(id)) {
+				setCharacterID(Number(index))					
+		}})
 	  return setCharacter(response);
 	}
 
@@ -25,17 +30,17 @@ export function UpdateCharacter() {
 		getApiData();
 	}, [])
 
-	const [name, setName] = useState(character[0]?.name)
-	const [life, setLife] = useState(character[0]?.life)
-	const [inventory, setInventory] = useState(character[0]?.inventory)
+	const [name, setName] = useState(character[character_ID]?.name)
+	const [life, setLife] = useState(character[character_ID]?.life)
+	const [inventory, setInventory] = useState(character[character_ID]?.inventory)
 	const [password, setPassword] = useState("")
 
 	async function handleSubmit(event: FormEvent) {
 		event.preventDefault()
 
-		name == undefined && setName(character[0]?.name)
-		life == undefined && setLife(Number(character[0]?.life))
-		inventory == undefined && setInventory(character[0]?.inventory)
+		name == undefined && setName(character[character_ID]?.name)
+		life == undefined && setLife(Number(character[character_ID]?.life))
+		inventory == undefined && setInventory(character[character_ID]?.inventory)
 		
 		const life_data = Number(life)
 
@@ -61,12 +66,12 @@ export function UpdateCharacter() {
 				<p className="mx-auto">Ficha do personagem</p>
 			</nav>
 			<form onSubmit={handleSubmit} className="bg-gray-700 flex flex-col pl-2 pb-2">
-				<InputForm key="1" typeInput="text" placeholderInput="Nome do personagem" setValue={setName} isUpdateCharacter={true} dataDefaultValue={character[0]?.name}  />
-				<p className="bg-gray-700 px-5 py-2 my-5">Dado atual: { name == undefined ? character[0]?.name : name}</p>
-				<InputForm key="2" typeInput="number" placeholderInput="Vida do personagem" setValue={setLife} isUpdateCharacter={true} dataDefaultValue={character[0]?.life}  />
-				<p className="bg-gray-700 px-5 py-2 my-5">Dado atual: { life == undefined ? character[0]?.life : life}</p>
-				<TextAreaForm key="3" placeholderInput="Inventário do personagem" setValue={setInventory} dataDefaultValue={character[0]?.inventory} />
-				<p className="bg-gray-700 px-5 py-2 my-5">Dado atual: { inventory == undefined ? character[0]?.inventory : inventory}</p>
+				<InputForm key="1" typeInput="text" placeholderInput="Nome do personagem" setValue={setName} isUpdateCharacter={true} dataDefaultValue={character[character_ID]?.name}  />
+				<p className="bg-gray-700 px-5 py-2 my-5">Dado atual: { name == undefined ? character[character_ID]?.name : name}</p>
+				<InputForm key="2" typeInput="number" placeholderInput="Vida do personagem" setValue={setLife} isUpdateCharacter={true} dataDefaultValue={character[character_ID]?.life}  />
+				<p className="bg-gray-700 px-5 py-2 my-5">Dado atual: { life == undefined ? character[character_ID]?.life : life}</p>
+				<TextAreaForm key="3" placeholderInput="Inventário do personagem" setValue={setInventory} dataDefaultValue={character[character_ID]?.inventory} />
+				<p className="bg-gray-700 px-5 py-2 my-5">Dado atual: { inventory == undefined ? character[character_ID]?.inventory : inventory}</p>
 				<InputForm key="4" typeInput="password" placeholderInput="Digite a senha do mestre para confirmar as alterações" setValue={setPassword} />
 
 				<button 
