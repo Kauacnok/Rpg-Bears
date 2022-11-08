@@ -34,20 +34,22 @@ export function DeleteCharacterCard({ isMenuOpen }: DeleteCharacterCardProps) {
 
 	return (
 		<section className="bg-gray-700 fixed top-0 left-0 h-screen w-screen">
-			<article className="flex justify-around my-20 items-center">
-				<h1 className="">Deseja deletar o personagem?</h1>
-				<button type="button" onClick={closeMenu}><X size={40} className="cursor-pointer" /></button>
+			<article className="flex flex-col w-[100%] h-[100%] justify-center items-center">
+				<nav className="flex gap-10 justify-around mb-20 items-center">
+					<h1>Deseja deletar o personagem?</h1>
+					<button type="button" onClick={closeMenu}><X size={40} className="cursor-pointer" /></button>
+				</nav>
+				<form onSubmit={handleSubmit}>
+					<InputForm typeInput="text" placeholderInput="Digite a senha do mestre para deletar o personagem" setValue={setPassword} />	
+					<button 
+						type="submit" 
+						className="w-[100%] mx-auto px-5 py-2 bg-red-500 hover:bg-red-700 disabled:opacity-50"
+						disabled={import.meta.env.VITE_UPDATE_CHARACTER_PASSWORD !== password}
+					>
+						Deletar o personagem
+					</button>
+				</form>
 			</article>
-			<form onSubmit={handleSubmit}>
-				<InputForm typeInput="text" placeholderInput="Digite a senha do mestre para deletar o personagem" setValue={setPassword} />	
-				<button 
-					type="submit" 
-					className="w-[100%] mx-auto px-5 py-2 bg-red-500 hover:bg-red-700 disabled:opacity-50"
-					disabled={import.meta.env.VITE_UPDATE_CHARACTER_PASSWORD !== password}
-				>
-					Deletar o personagem
-				</button>
-			</form>
 		</section>
 	)
 }
