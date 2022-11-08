@@ -3,6 +3,7 @@ import { useState, FormEvent } from 'react'
 
 import { Header } from '../components/Header'
 import { InputForm } from '../components/InputForm'
+import { NavBarMobile } from '../components/NavBarMobile'
 
 export function CreateCharacter() {
 	const navigate = useNavigate()
@@ -44,6 +45,9 @@ export function CreateCharacter() {
 						Criar um personagem
 					</button>
 				</form>
+				<footer className="mt-20">
+					<NavBarMobile typeIntImage={3} />
+				</footer>
 			</main>
 		</>
 	)

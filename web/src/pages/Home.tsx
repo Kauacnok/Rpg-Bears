@@ -1,5 +1,6 @@
 import { Header } from '../components/Header'
 import { FaqCard } from '../components/FaqCard'
+import { NavBarMobile } from '../components/NavBarMobile'
 
 export function Home() {
 	return (
@@ -11,6 +12,9 @@ export function Home() {
 				<FaqCard question="Como funciona os numeros dos atributos?" answer="Os atributos são gerados aleatoriamente de a 1 até 5 assim como a classe do personagem é gerada aleatoriamente, o inventário começa vazio, e apenas o mestre pode dar algum item inicial" />
 				<FaqCard question="Se eu morrer eu posso criar outro personagem?" answer="Fique conformado, o mestre vai dar um jeito de voce morrer, mas sim pode criar outro personagem" />
 			</main>
+			<footer className="mt-20">
+				<NavBarMobile typeIntImage={1} />	
+			</footer>
 		</>
 	)
 }

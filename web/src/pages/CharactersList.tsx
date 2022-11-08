@@ -2,6 +2,7 @@ import {useState, useEffect } from "react"
 
 import { Header } from '../components/Header'
 import { CharacterSimpleCard } from '../components/CharacterSimpleCard'
+import { NavBarMobile } from '../components/NavBarMobile'
 
 interface CharacterProps {
 	id: number,
@@ -42,6 +43,9 @@ export function CharactersList() {
 					}		
 				</article>
 			</main>
+			<footer className="mt-20">
+				<NavBarMobile typeIntImage={2} />	
+			</footer>
 		</>
 	)
 }

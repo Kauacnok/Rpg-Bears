@@ -3,6 +3,7 @@ import { Link, useParams, useNavigate} from 'react-router-dom'
 import { ArrowLeft } from 'phosphor-react'
 
 import { Header } from '../components/Header'
+import { NavBarMobile } from '../components/NavBarMobile'
 import { InputForm } from '../components/InputForm'
 import { TextAreaForm } from '../components/TextAreaForm'
 
@@ -82,6 +83,9 @@ export function UpdateCharacter() {
 					Atualizar um personagem
 				</button>
 			</form>
+			<footer className="mt-20">
+				<NavBarMobile typeIntImage={2} />	
+			</footer>
 		</>
 	)
 }

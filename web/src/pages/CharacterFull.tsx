@@ -3,6 +3,7 @@ import { Link, useParams } from 'react-router-dom'
 import { ArrowLeft } from 'phosphor-react'
 
 import { Header } from '../components/Header'
+import { NavBarMobile } from '../components/NavBarMobile'
 import { DeleteCharacterCard } from '../components/DeleteCharacterCard'
 
 export function CharacterFull() {
@@ -69,6 +70,9 @@ export function CharacterFull() {
 					<button type="button" className="bg-red-500 w-[100%] p-2 rounded hover:bg-red-600 transition" onClick={openMenu}>Deletar personagem</button>
 				</footer>
 			</main>
+			<footer className="mt-20">
+				<NavBarMobile typeIntImage={2} />
+			</footer>
 		</>
 	)
 }
