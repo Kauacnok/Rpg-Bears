@@ -47,7 +47,7 @@ Feedbacks sempre são bem vindos :)
 
 Você pode visualizar o layout do projeto através do link abaixo:
 
-- [Aessar o site](https://rpg-bears.vercel.app/)
+- [Acessar o site](https://rpg-bears.vercel.app/)
 
 ## 📖 O que eu aprendi
 
