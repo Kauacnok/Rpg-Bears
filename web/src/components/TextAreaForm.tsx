@@ -1,13 +1,16 @@
+import { SyntheticEvent } from 'react'
+
 interface TextAreaFormProps {
 	placeholderInput: string,
 	setValue: Function,
-	dataDefaultValue: any
+	dataDefaultValue: string | number | undefined
 }
 
 export function TextAreaForm({placeholderInput, setValue, dataDefaultValue}: TextAreaFormProps) {
 
-	function addDataOnTextArea(event: any, value: Function, defaultValue: any) {
-  		event.target.value == "" ? value(defaultValue) : value(event.target.value)
+	function addDataOnTextArea(event: SyntheticEvent, value: Function, defaultValue: string | number | undefined) {
+		let target = event.target as HTMLInputElement
+  		target.value == "" ? value(defaultValue) : value(target.value)
   	}
 
 	return (
