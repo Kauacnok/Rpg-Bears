@@ -17,7 +17,7 @@ export function CharacterSimpleCard({ id, name, createdAt }: CharacterSimpleCard
 	})
 
 	return (
-		<Link to={`/Character/${id}`} className="p-10 pb-5 my-5 mx-5 border-[1px] bg-gray-500 border-gray-500 rounded-tl-lg rounded-br-lg cursor-pointer hover:bg-gray-600 hover:border-gray-600 md:w-[450px] transition">
+		<Link to={`/Character/${id}`} className="p-10 pb-5 my-5 mx-5 border-[1px] bg-gray-500 border-gray-500 rounded-tl-lg rounded-br-lg cursor-pointer hover:bg-gray-600 hover:border-gray-600 hover:translate-y-[-4px] md:w-[450px] transition">
 			<h1 className="mb-10">{ name }</h1>
 			<span>Criado no {formattedDate}</span>
 		</Link>
