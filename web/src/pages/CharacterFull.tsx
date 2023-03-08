@@ -61,7 +61,7 @@ export function CharacterFull() {
 				</article>
 				<article className="flex flex-col p-5 bg-gray-700 border-2 mx-2 mb-4 border-gray-500">
 					<h2 className="text-[30px]">Inventário: </h2>
-					<textarea value={character[character_ID]?.inventory} readOnly className="bg-gray-700 w-[90%] h-[400px]"></textarea>
+					<textarea value={character[character_ID]?.inventory} readOnly className="bg-gray-700 w-[90%] h-[400px] focus:outline-none"></textarea>
 				</article>
 				<aside>
 					{isMenuOpen && <DeleteCharacterCard isMenuOpen={setIsMenuOpen} />}
