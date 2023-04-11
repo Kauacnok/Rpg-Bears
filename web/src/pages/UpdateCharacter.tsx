@@ -32,7 +32,7 @@ export function UpdateCharacter() {
 	}, [])
 
 	const [name, setName] = useState("")
-	const [life, setLife] = useState("")
+	const [life, setLife] = useState(0)
 	const [inventory, setInventory] = useState("")
 	const [password, setPassword] = useState("")
 
