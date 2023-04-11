@@ -31,10 +31,22 @@ export function UpdateCharacter() {
 		getApiData();
 	}, [])
 
-	const [name, setName] = useState(character[character_ID]?.name)
-	const [life, setLife] = useState(character[character_ID]?.life)
-	const [inventory, setInventory] = useState(character[character_ID]?.inventory)
+	const [name, setName] = useState("")
+	const [life, setLife] = useState("")
+	const [inventory, setInventory] = useState("")
 	const [password, setPassword] = useState("")
+
+	function addedNameToInput() {
+		setName(character[character_ID]?.name)
+	}
+
+	function addedLifeToInput() {
+		setLife(character[character_ID]?.life)
+	}
+
+	function addedInventoryToInput() {
+		setInventory(character[character_ID]?.inventory)
+	}
 
 	async function handleSubmit(event: FormEvent) {
 		event.preventDefault()
@@ -67,12 +79,21 @@ export function UpdateCharacter() {
 				<p className="mx-auto">Ficha do personagem</p>
 			</nav>
 			<form onSubmit={handleSubmit} className="bg-gray-700 flex flex-col pl-2 pb-2">
-				<InputForm key="1" typeInput="text" placeholderInput="Nome do personagem" setValue={setName} isUpdateCharacter={true} dataDefaultValue={character[character_ID]?.name}  />
-				<p className="bg-gray-700 px-5 py-2 my-5">Dado atual: { name == undefined ? character[character_ID]?.name : name}</p>
-				<InputForm key="2" typeInput="number" placeholderInput="Vida do personagem" setValue={setLife} isUpdateCharacter={true} dataDefaultValue={character[character_ID]?.life}  />
-				<p className="bg-gray-700 px-5 py-2 my-5">Dado atual: { life == undefined ? character[character_ID]?.life : life}</p>
-				<TextAreaForm key="3" placeholderInput="Inventário do personagem" setValue={setInventory} dataDefaultValue={character[character_ID]?.inventory} />
-				<p className="bg-gray-700 px-5 py-2 my-5">Dado atual: { inventory == undefined ? character[character_ID]?.inventory : inventory}</p>
+				<InputForm key="1" typeInput="text" placeholderInput="Nome do personagem" setValue={setName} isUpdateCharacter={true} dataDefaultValue={character[character_ID]?.name} value={name} />
+				<div className="flex justify-start items-center">
+					<p className="bg-gray-700 px-5 py-2 my-5 border-r-2 border-r-gray-500">Dado atual: { name == undefined ? character[character_ID]?.name : name}</p>	
+					<button type="button" className="ml-4 px-4 py-2 bg-green-500 rounded hover:bg-green-700 transition" onClick={((e) => { addedNameToInput() })}>Adicionar valor atual ao input</button>
+				</div>
+				<InputForm key="2" typeInput="number" placeholderInput="Vida do personagem" setValue={setLife} isUpdateCharacter={true} dataDefaultValue={character[character_ID]?.life} value={life} />
+				<div className="flex justify-start items-center">
+					<p className="bg-gray-700 px-5 py-2 my-5 border-r-2 border-r-gray-500">Dado atual: { life == undefined ? character[character_ID]?.life : life}</p>
+					<button type="button" className="ml-4 px-4 py-2 bg-green-500 rounded hover:bg-green-700 transition" onClick={((e) => { addedLifeToInput() })}>Adicionar valor atual ao input</button>
+				</div>
+				<TextAreaForm key="3" placeholderInput="Inventário do personagem" setValue={setInventory} dataDefaultValue={character[character_ID]?.inventory} value={inventory} />
+				<div className="flex justify-start items-center">
+					<p className="bg-gray-700 px-5 py-2 my-5 border-r-2 border-r-gray-500">Dado atual: { inventory == undefined ? character[character_ID]?.inventory : inventory}</p>
+					<button type="button" className="ml-4 px-4 py-2 bg-green-500 rounded hover:bg-green-700 transition" onClick={((e) => { addedInventoryToInput() })}>Adicionar valor atual ao input</button>
+				</div>
 				<InputForm key="4" typeInput="password" placeholderInput="Digite a senha do mestre para confirmar as alterações" setValue={setPassword} />
 
 				<button 
